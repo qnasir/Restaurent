@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurent</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <div id="navbar" class="flex">
+        <div class="flex">
+        <img id="lady" src="./assets/lady.png" alt="">
+        <h1>NS</h1>
+        </div>
+        <div class="navContainter flex">
+            <h2>HOME</h2>
+            <h2>ABOUT</h2>
+            <h2>CATEGORIES</h2>
+            <h2>CONTACT</h2>
+        </div>
+        <div class="end flex">
+            <img id="cart" src="./assets/cart.png" alt="">
+            <img id="phone" src="./assets/phone.png" alt="">
+            <h2>Credit goes to Abdul Nasir Qureshi</h2>
+            <img id="hat" src="./assets/hat.png" alt="">
+        </div>
+    </div>
+
+    <div id="searchBar">
+        <input class="search" type="text" placeholder="Search here..." id="searchInput">
+        <button id="submit-btn" onclick="searchMeals()">Search</button>
+    </div>
+
+    <div id="meal-container" class="recipe-container"></div>
+
+    <div id="aboutUs">
+        <div id="details">
+            <div id="span">
+                <span id="about">ABOUT</span>
+                <span id="us">US</span>
+            </div>
+            <div id="information">
+                <p>My MD, Donna, had her little twin ladies prematurely in 2013, and was keen to help them overcome the health issues they faced by feeding them dishes packed full of immune-boosting ingredients. After seeing great results from her food-focused approach, Nasir and his father (Salam) decided that all parents deserved access to healthier, nutritionally superior meals for their little ones – and so The N & S Company was born!</p>
+            </div>
+            <div id="rating">
+                <div>
+                    <h3>4.7</h3>
+                    <h4>Ratings</h4>
+                </div>
+                <div>
+                    <h3>206</h3>
+                    <h4>Reviews</h4>
+                </div>
+                <div>
+                    <h3>9K+</h3>
+                    <h4>Users</h4>
+                </div>
+            </div>
+        </div>
+
+        <div id="images">
+            <img src="./assets/images.png" alt="">
+        </div>
+    </div>
+
+    <div id="searchResult">
+        <div class="result">Your Search Results Are Here :-</div>
+    </div>
+
+    <div id="MealContainer"></div>
+
+    <div id="myModal" class="modal ">
+        <div class="modal-content">
+          <span class="close" onclick="closeModal()">&times;</span>
+          <h2 id="modalTitle"></h2>
+          <div id="box">
+            <h1 style="text-decoration: underline; font-family: 'Judson', serif;">Ingredients:</h1>
+            <ul id="ingredientsList">
+            </ul>
+            <h1 style="text-decoration: underline; font-family: 'Judson', serif; padding-top: 10px;"> Recipe Instructions:</h1>
+            <p id="recipe"></p>
+          </div>
+        </div>
+      </div>
+
+    <!-- FOOTER SECTION -->
+    <div>
+        <div id="footer">
+            <h2>"Crafting memories through exquisite cuisine. Your table is set for an unforgettable dining adventure."</h2>
+            <h3>Thank You</h3>
+        </div>
+    
+        <div id="marquee">
+            <marquee>>All rights reserved.Made by Abdul Nasir Qureshi.<</marquee>
+        </div>
+    </div>
+
+    <script src="randomMeal.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
