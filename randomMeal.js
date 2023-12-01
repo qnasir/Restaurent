@@ -81,3 +81,4 @@ function closeRandomModal() {
 // Call getRandomMeal after the initial HTML has loaded
 window.onload = getRandomMeal;
 
+
