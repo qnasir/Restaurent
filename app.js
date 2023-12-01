@@ -1,55 +1,113 @@
-// Search Result Meal
-function generateIngredientsAndRecipe(mealId) {
-    return fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealId}`)
-        .then(response => response.json())
-        .then(data => {
-            const meal = data.meals[0];
-            const ingredients = generateIngredientsList(meal);
-            const recipe = meal.strInstructions;
-            return { ingredients, recipe };
-        })
-        .catch(error => {
-            console.error('Error fetching detailed data:', error);
-            return { ingredients: '', recipe: '' }; // Return empty strings if there's an error
-        });
-}
+// SEARCH RESULT MEAL
+let searchValue = document.getElementById("searchInput");
 
-function searchMeals() {
+const resultContainer = document.getElementById("meals")
+
+searchValue.addEventListener("keydown", function (event) {
+  if (event.keyCode === 13) {
+    fetchMeals();
+    navigator()
+  }
+});
+
+function navigator() {
+    let resultDiv = document.getElementById("meals");
+    resultDiv.scrollIntoView({ behavior: "smooth" });
+  }
+
+function fetchMeals() {
     const searchInput = document.getElementById('searchInput').value;
-    const MealContainer = document.getElementById('MealContainer');
     const result = document.querySelector(".result");
     result.style.display = "block";
 
-    // Clear previous search results
-    MealContainer.innerHTML = '';
+    const apiUrl = `https://www.themealdb.com/api/json/v1/1/filter.php?c=${searchInput}`;
 
-    // Fetch meals based on the search category
-    fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${searchInput}`)
+    // Clear previous results
+    document.getElementById('meals').innerHTML = '';
+
+    // Fetch data from the API
+    fetch(apiUrl)
         .then(response => response.json())
         .then(data => {
-            const meals = data.meals;
-            console.log("meals: ", meals);
+            const mealsContainer = document.getElementById('meals');
 
-            // Display each meal in the container
-            meals.forEach(async meal => {
-                const mealCard = document.createElement('div');
-                const { ingredients, recipe } = await generateIngredientsAndRecipe(meal.idMeal);
-
-                mealCard.innerHTML = `
-                    <div id="mealCard">
-                        <img src="${meal.strMealThumb}" alt="${meal.strMeal}" class="dish-image">
-                        <h1 class="dish-title">${meal.strMeal}</h1>
-                        <button class="ingredients-button" onclick="toggleIngredients()">Show Ingredients</button>
-                        <ul class="ingredients-list hidden" id="ingredientsList">
-                            ${ingredients}
-                        </ul>
-                        <button class="recipe-button" onclick="toggleRecipe()">View Recipe</button>
-                        <div class="hidden" id="Recipe">${recipe}</div>
-                        <button class="youtube-link" onclick="openTutorial('${meal.strMeal}')">Watch Tutorial</button>
+            // Iterate through each meal and create a card
+            data.meals.forEach(meal => {
+                mealsContainer.innerHTML += `
+                    <div class="meal-card">
+                        <img src="${meal.strMealThumb}" alt="${meal.strMeal}" class="meal-image">
+                        <h1 class="youtubeteach">${meal.strMeal}</p>
+                        <button class="ingredients-button" onclick="Ingredients('${meal.idMeal}')">Show Ingredients</button>
+                        <button class="recipe-button" onclick="Recipe('${meal.idMeal}')">View Recipe</button>
+                        <button class="youtube-link" onclick="Tutorial()">Watch Tutorial</button>
                     </div>
                 `;
-                MealContainer.appendChild(mealCard);
+
+                
             });
         })
         .catch(error => console.error('Error fetching data:', error));
+}
+
+// FETCH INGRIDIENTS
+function Ingredients(mealId) {
+    const ingredientsUrl = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealId}`;
+
+    // Fetch ingredients data from the API
+    fetch(ingredientsUrl)
+        .then(response => response.json())
+        .then(data => {
+            const ingredientsContent = document.getElementById('getIngridient');
+            ingredientsContent.innerHTML = '';
+
+            // Display ingredients in the modal
+            const ingredients = data.meals[0];
+            for (let i = 1; i <= 20; i++) {
+                const ingredient = ingredients[`strIngredient${i}`];
+                const measure = ingredients[`strMeasure${i}`];
+
+                if (ingredient && measure) {
+                    ingredientsContent.innerHTML += `<p>${measure} ${ingredient}</p>`;
+                }
+            }
+
+            // Show the modal
+            document.getElementById('ingredientsModal').style.display = 'flex';
+        })
+        .catch(error => console.error('Error fetching ingredients:', error));
+}
+
+
+// FETCH RECIPIE
+function Recipe(mealId) {
+    const recipieUrl = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealId}`;
+
+    // Fetch recipe data from the API
+    fetch(recipieUrl)
+        .then(response => response.json())
+        .then(data => {
+            const recipieContent = document.getElementById('getRecipie');
+            recipieContent.innerHTML = '';
+
+            // Display instructions in the modal
+            const recipies = data.meals[0];
+            const instructions = recipies.strInstructions;
+            recipieContent.innerHTML = `<p>${instructions}</p>`;
+
+            // Show the modal
+            document.getElementById('recipieModal').style.display = 'flex';
+        })
+        .catch(error => console.error('Error fetching recipe:', error));
+}
+
+// Function to close the recipe modal
+function closeModal() {
+    document.getElementById('recipieModal').style.display = 'none';
+    document.getElementById('ingredientsModal').style.display = 'none';
+}
+
+function Tutorial() {
+    var youtubeteach = document.querySelector(".youtubeteach").textContent;
+    var youtubeLink = `https://www.youtube.com/results?search_query=${youtubeteach} recipe tutorial`;
+    window.open(youtubeLink, '_blank');
 }

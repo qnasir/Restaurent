@@ -45,7 +45,7 @@ h1 {
 }
 
 .end {
-    margin-left: 340px;
+    margin-left: 26.5%;
 }
 
 #cart {
@@ -58,20 +58,20 @@ h1 {
 }
 
 .end>h2 {
-    font-size: 18px;
+    font-size: 13px;
     color: #F7C334;
     display: flex;
     margin-left: 5px;
 }
 
 .end #phone {
-    height: 20px;
-    margin: -20px 0 0 8px;
+    height: 16px;
+    margin: -25px 0 0 8px;
     filter: invert(1);
 }
 
 .end #hat {
-    margin-right: 20px;
+    margin-left: 20px;
 }
 
 .end #cart {
@@ -79,11 +79,12 @@ h1 {
     filter: invert(1);
 }
 
+/* SEARCH BAR STYLING */
+
 #searchBar {
     margin: 37.5% 18.4%;
 }
 
-/* SEARCH BAR STYLING */
 input[type=text] {
     width: 347.548px;
     height: 36.434px;
@@ -255,7 +256,8 @@ span {
     transition: background-color 0.3s;
     text-decoration: none;
     margin-top: 10px;
-    margin-left: 31%;
+    border: 1px solid rgb(114, 1, 1);
+    margin-left: 34%;
 }
 
 .youtube-link:hover {
@@ -268,11 +270,11 @@ span {
 }
 
 
-#MealContainer {
+#meals {
     margin: 3% 11.2%;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 40px;
+    gap: 15px;
     max-width: 90%;
     left: 11.3%;
 }
@@ -285,10 +287,10 @@ span {
     color: white;
 }
 
-#mealCard {
+.meal-card {
     max-width:100%;
     padding: 20px;
-    background: rgba( 255, 255, 255, 0.05 );
+    background: rgba( 255, 255, 255, 0.2 );
     border: 1px solid rgb(245, 245, 77);
     box-shadow: 0 0 10px rgb(252, 211, 5);
     border-radius: 10px;
@@ -298,6 +300,7 @@ span {
 
 /* Footer Section */
 #footer {
+    margin-top: 2%;
     padding: 50px;
     background-image: url("./assets/footer\ image.png");
 }
@@ -330,99 +333,312 @@ span {
     align-items: center;
 }
 
+  /* test  */
+  .meal-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
 
-@keyframes transform {
-    0% {
-      left: 0px;
-      top: 0px;
-    }
-    100% {
-      left: 0px;
-      top: 50px;
-    }
-  }
-  
-  .modal {
+.meal-card {
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 350px;
+    text-align: center;
+}
+
+.meal-image {
+    max-width: 250px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0px 1px 2px 0px rgba(255, 255, 255, 0.7),
+            1px 2px 4px 0px rgba(255, 255, 255, 0.7),
+            2px 4px 8px 0px rgba(255, 255, 255, 0.7),
+            2px 4px 16px 0px rgba(255, 255, 255, 0.7);
+    margin-bottom: 20px;
+}
+
+/* Modal styles */
+.modal {
     display: none;
     position: fixed;
-    z-index: 1;
-    left: 0;
     top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    overflow: auto;
+    font-size:24px;
     background-color: rgba(0, 0, 0, 0.7);
-    overflow-y: none;
-  }
-  
-  
-  
-  
-  .modal-content {
-    background-size: 100%;
-    background-color: rgba(255, 255, 255, 0.7);
-    margin: 15% auto;
-    padding: 40px;
-    border: 6px solid #000000;
-    border-radius: 40px;
-    width: 80%;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: rgba(37, 37, 37, 0.475);
+    border: 1px solid rgb(245, 245, 77);
+    box-shadow: 0 0 10px rgb(252, 211, 5);
+    border-radius: 10px;
+    padding: 20px;
+    border-radius: 5px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: rgb(255, 255, 0);
+    font-weight: 500;
     height: fit-content;
-    animation: transform 5s;
-    transition: 0.5s ease;
-  }
-  
-  .close {
-    color: #424242;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-    transition: 0.5s ease;
-  }
-  
-  .close:hover,
-  .close:focus {
-    color: rgb(255, 0, 0);
-    text-decoration: none;
-    cursor: pointer;
-  }
-  
-  #modalTitle,#ingredientsList{
-    color: rgb(0, 0, 0);
-  }
-  
-  #modalTitle{
-    font-family: "Italiana", sans-serif;
+    max-width: 60%;
+    max-height: 80%;
     text-align: center;
+    overflow-y: scroll;
+}
+
+.close {
+    font-size: 100px;
+    color: black;
+}
+
+.close-data>h1 {
     font-size: 40px;
     text-decoration: underline;
-  }
-  
-  #ingredientsList{
-    list-style-type: none;
-    font-family: "Judson", serif;
-    font-size: 30px;
-  }
-  
-  #recipe{
-    padding-top: 10px;
-    font-family: "Judson", serif;
-    font-size: 30px;
-  }
-  
-  #box{
-    height: 580px;
-    overflow: scroll;
-    overflow-x: hidden;
-  }
-  
-  #box::-webkit-scrollbar{
-    width: 10px;
-  }
-  #box::-webkit-scrollbar-track{
-    background-color: rgba(255, 255, 255, 0);
-  }
-  #box::-webkit-scrollbar-thumb{
-  
-    border-radius: 20px;
-    background-color: rgb(0, 0, 0);
-  }
+    padding-bottom: 20px;
+}
+
+.close-data>span {
+    font-size: 40px;
+    text-decoration: none;
+    color: white;
+    margin-left: 20px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.close-data>span:hover {
+    color: red;
+}
+
+.close-data {
+    display: flex;
+    justify-content: center;
+    margin-left: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Responsiveness */
+
+@media (max-width: 475px) {
+    /* NAVBAR STYLING */
+    #navbar img {
+        height: 20px;
+    }
+
+    .navContainter {
+        display: none;
+    }
+    
+    h1 {
+        font-size: 1px;
+    }
+    
+    .end {
+        margin-left: 55%;
+    }
+    
+    .end>h2 {
+        font-size: 5px;
+    }
+    
+    .end #phone {
+        height: 10px;
+        margin: -10px 0 0 8px;
+    }
+    
+    .end #hat {
+        margin-left: 10px;
+    }
+    
+    .end #cart {
+        height: 13px;
+    }
+    
+    /* SEARCH BAR STYLING */
+    
+    #searchBar {
+        margin: 32.5% 18.4%;
+    }
+    
+    input[type=text] {
+        width: 60px;
+        height: 15px;
+        font-size: 8px;
+        padding: 0px 10px;
+    }
+    
+    #submit-btn {
+        padding: 4px 5px;
+        font-size: 8px;
+    }
+    /* Ramdom Meal */
+    #meal-container {
+        margin: -20% auto;
+        max-width: 54%;
+        padding: 5px;
+    }
+    
+    /* CREATER INFORMATION */
+    #aboutUs {
+        margin-top: 100px;
+    }
+    
+    #images {
+        margin-right: 50px;
+        border-bottom: 2px solid #787878;
+        padding-bottom: 35px;
+    }
+
+    #images>img {
+        height: 80px;
+    }
+    
+    #details {
+        margin-left: 50px;
+    }
+    
+    #span {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+    }
+    
+    #information {
+        font-size: 5px;
+        margin-top: 7px;
+    }
+    
+    #about {
+    font-size: 20px;
+    }
+    
+    #us {
+        font-size: 20px;
+    }
+    
+    #rating {
+        margin-top: 10px;
+    }
+    
+    #rating h3 {
+        font-size: 10px;
+    }
+    
+    #rating h4 {
+        font-size: 10px;
+    }
+    
+    .dish-image {
+        max-width: 100px;
+    }
+    
+    .dish-title {
+        font-size: 12px;
+        margin-top: -15px;
+    }
+    
+    .ingredients-button,
+    .recipe-button {
+        padding: 5px 10px;
+        font-size: 8px;
+    }
+    
+    .youtube-link {
+        padding: 4px 10px;
+        font-size: 8px;
+    }
+    
+    #meals {
+        margin-left: 41%;
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 15px;
+        max-width:41%;
+    }
+    
+    .result {
+        display: none;
+        margin: 3% 13%;
+        font-size: 12px;
+    }
+    
+    .meal-card {
+        max-width:50%;
+        padding: 20px;
+    }
+    
+    
+    /* Footer Section */
+    #footer {
+        margin-top: 1%;
+        padding: 10px;
+        background-repeat: no-repeat;
+    }
+    
+    #footer>h2 {
+        font-size: 20px;
+    }
+    
+    #footer>h3 {
+        font-size: 15px;
+    }
+    
+    #marquee {
+        height: 40px;
+        font-size: 20px;
+    }
+    
+      /* test  */
+    .meal-card {
+        margin: 10px;
+        margin-left: 50px;
+        padding: 10px;
+        width: 350px;
+    }
+
+    .meal-card h1 {
+        font-size: 20px;
+    }
+    
+    .meal-image {
+        max-width: 100px;
+        height: auto;
+        border-radius: 10px;
+    }
+    
+    /* Modal styles */
+    .modal {
+        font-size:14px;
+    }
+    
+    .modal-content {
+        padding: 10px;
+        max-height: 60%;
+    }
+    
+    .close-data>h1 {
+        font-size: 19px;
+        padding-bottom: 10px;
+    }
+    
+    .close-data>span {
+        font-size: 20px;
+        margin-top: 5px;
+    }
+}
